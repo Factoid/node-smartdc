@@ -35,6 +35,7 @@ var ShortOptions = {
     'd': ['--debug'],
     'e': ['--dataset'],
     'f': ['--enable-firewall'],
+    'i': ['--image'],
     'h': ['--help'],
     '?': ['--help'],
     'k': ['--keyId'],
@@ -54,8 +55,12 @@ usageStr += common.buildDetailedUsageString(Options);
 
 common.parseArguments(Options, ShortOptions, function (parsed) {
     var opts = {};
-    if (parsed.dataset) {
-        opts.dataset = parsed.dataset;
+    if (parsed.dataset)
+    {
+      opts.image = parsed.dataset;
+    } else if(parsed.image)
+    {
+      opts.image = parsed.image;
     }
     if (parsed.name)  {
         opts.name = parsed.name;
